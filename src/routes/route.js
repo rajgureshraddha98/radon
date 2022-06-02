@@ -1,5 +1,5 @@
-const express = require('express');
-const shalu = require('.logger/logger')
+const express = require('express')
+const shalu = require('../logger/logger')
 const shalu1 = require('../validation/formatter')
 const router = express.Router();
 
