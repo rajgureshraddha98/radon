@@ -4,7 +4,8 @@ const userSchema = new mongoose.Schema( {
     firstName: String,
     lastName: String,
     mobile: {
-        type: Number,
+        type: String,
+
         required: true
     },
     emailId: String,
@@ -14,10 +15,11 @@ const userSchema = new mongoose.Schema( {
         enum: ["male", "female", "other"]
     },
     age: Number,
-    isDeleted: {
-        type: Boolean,
-        default: false,
-    }
+    isDeleted:{
+        type:Boolean,
+        default:false
+    },
+    posts: {type: [], deafult: []}
 }, { timestamps: true });
 
-module.exports = mongoose.model('UserCollection', userSchema)
+module.exports = mongoose.model('User8', userSchema)
