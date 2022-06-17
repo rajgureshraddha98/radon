@@ -7,8 +7,12 @@ const createUser = async function (abcd, xyz) {
   //You can name the req, res objects anything.
   //but the first parameter is always the request 
   //the second parameter is always the response
+  try{
   let data = abcd.body;
   let savedData = await userModel.create(data);
+
+  res.status(200).send({msg:savedData})
+  }catch(err){res.status(500).send({msg:"token is invalid", error:err.message})}
   console.log(abcd.newAtribute);
   xyz.send({ msg: savedData });
 };
