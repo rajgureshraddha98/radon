@@ -1,22 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const userController= require("../controllers/userController")
-const middleware= require("../middleware/auth")
+const CowinController = require("../controllers/cowinController")
 
-router.get("/test-me", function (req, res) {
+
+
+router.get("/test-me", function(req, res) {
     res.send("My first ever api!")
 })
 
-router.post("/users", userController.createUser  )
 
-router.post("/login", userController.loginUser)
+router.get("/getStates", CowinController.getStates)
+router.get("/getDistrictsByStateId/:stateId", CowinController.getDistricts)
+router.get("/getByPin", CowinController.getByPin)
 
-router.get("/getUserData/:userId",middleware.mid,middleware.Authorise, userController.getUserData)
+router.post("/getOtp", CowinController.getOtp)
+router.get("/getSessionByDistrictId", CowinController.getSession)
+router.get("/Weather", CowinController.getWeather)
+router.get("/SortedCities", CowinController.getSortedCities)
+router.post("/getMeme", CowinController.getMeme)
 
-router.put("/updateUser/:userId",middleware.mid,middleware.Authorise, userController.updateUser)
+// WRITE A GET API TO GET THE LIST OF ALL THE "vaccination sessions by district id" for any given district id and for any given date
 
-router.post("/postMessage/:userId/posts",middleware.mid,middleware.Authorise, userController.postMessage)
 
-router.delete("/Deleteuser/:userId",middleware.mid,middleware.Authorise, userController.Deleteuser)
 
 module.exports = router;
